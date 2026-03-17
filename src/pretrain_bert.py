@@ -249,4 +249,6 @@ if __name__ == "__main__":
             tar.add(
                 local_save_directory, arcname=os.path.basename(local_save_directory)
             )
-    except Exception as e
+    except Exception as e:
+        print(f'Failed to create tar archive: {e}')
+        raise

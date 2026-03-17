@@ -1,0 +1,75 @@
+# pretrain_dummy.yaml
+
+learning_rate: 0.00005
+
+# ===== Batch =====
+
+batch_size: 2
+eval_batch_size: 2
+gradient_accumulation_steps: 1
+
+# ===== Model =====
+
+hidden_size: 768
+num_hidden_layers: 12
+num_attention_heads: 12
+model_flavour: "bert"
+
+# ===== MLM settings =====
+
+prediction_fraction: 0.15
+masking_fraction: 0.8
+random_replacement_fraction: 0.1
+
+# ===== Sequence =====
+
+minimum_number_of_tokens: 5
+override_maxlen: 128
+max_position_embeddings: 512
+
+# ===== Training =====
+
+num_training_epochs: 1
+weight_decay: 0.001
+hidden_dropout_prob: 0.1
+attention_probs_dropout_prob: 0.1
+
+# ===== Data =====
+
+training_partition_size: 256
+validation_partition_size: 12
+validation_set_fraction: 0.01
+val_size: 0.01
+
+# ===== Logging =====
+
+logging_steps: 1
+save_steps: 1000
+eval_steps: 1000
+
+# ===== Early stopping =====
+
+early_stop_metric: "eval_loss"
+early_stop_patience: 10
+early_stopping_delay: 0.0
+
+# ===== Hardware (safe mode) =====
+
+fp16: False
+bf16: False
+num_dataloader_workers: 0
+
+# ===== Warmup =====
+
+warmup_steps: 0.05
+
+# ===== Save =====
+
+save_total_limit: 2
+
+# ===== Paths =====
+
+training_data_filepath: "datasets/bert/dummy_data_big.parquet"
+vocab_filepath: "./datasets/bert/vocab_dummy.txt"
+output: "./output/bert_pretraining/dummy_data/"
+
