@@ -28,7 +28,7 @@ def build_vocab(parquet_path):
 
 
 def main():
-    input_path = Path("datasets/bert/synthea_diabetes_training.parquet")
+    input_path = Path("aiml/datasets/synthea_diabetes_training.parquet")
     output_path = Path("datasets/bert/vocab.txt")
 
     vocab = build_vocab(input_path)

@@ -33,6 +33,6 @@ warmup_steps: 0.05 # how many epochs to spend warming up the learning rate
 save_total_limit: 3
 early_stopping_delay: 0.0 # how many epochs to wait until starting to use early stopping.
 output: "./output/bert_pretraining/dataset_name/" # output dir folder
-training_data_filepath: "datasets/bert/synthea_diabetes_training.parquet"
+training_data_filepath: "../aiml/datasets/synthea_diabetes_training_updated.parquet"
 val_size: 0.01 # val dataset fraction
-vocab_filepath: "./datasets/bert/vocab.txt" # vocab file path; TODO: cleanup path
+vocab_filepath: "../aiml/datasets/vocab_synthea.txt" # vocab file path; TODO: cleanup path
