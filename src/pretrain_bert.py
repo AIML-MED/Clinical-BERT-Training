@@ -1,7 +1,9 @@
 import argparse
 import os
 import pprint
+import shutil
 import tarfile
+from pathlib import Path
 import yaml
 
 import numpy as np
@@ -33,6 +35,23 @@ from data_processing.bert.callbacks import DelayedEarlyStoppingCallback, Metrics
 from data_processing.bert.utils import get_vocab_from_file, resolve_sequence_length
 
 from models.bert import compute_pretraining_metrics, preprocess_logits_for_metrics
+
+
+class WordPieceTokenizerWrapper:
+    def __init__(self, vocab_filepath: str):
+        self.vocab_filepath = Path(vocab_filepath)
+        self.model = tokenizers.models.WordPiece.from_file(str(self.vocab_filepath))
+
+    def tokenize(self, text):
+        return self.model.tokenize(text)
+
+    def save_pretrained(self, save_directory):
+        save_directory = Path(save_directory)
+        save_directory.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(self.vocab_filepath, save_directory / "vocab.txt")
+
+    def save(self, save_directory):
+        self.save_pretrained(save_directory)
 
 
 def train_model(
@@ -225,7 +244,7 @@ if __name__ == "__main__":
     print(f"Saving training logs in {local_training_logs_directory}")
     
     vocab_filepath = pretrain_config['vocab_filepath']
-    tokenizer = tokenizers.models.WordPiece.from_file(vocab_filepath)
+    tokenizer = WordPieceTokenizerWrapper(vocab_filepath)
     vocabulary = get_vocab_from_file(vocab_filepath)
     
     model, pretrain_config, trainer = train_model(
@@ -238,7 +257,7 @@ if __name__ == "__main__":
     )
 
     model.save_pretrained(local_save_directory)
-    tokenizer.save(local_save_directory)
+    tokenizer.save_pretrained(local_save_directory)
 
     # zip-up the folder
     head, tail = os.path.split(local_save_directory)
