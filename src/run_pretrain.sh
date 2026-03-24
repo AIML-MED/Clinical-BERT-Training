@@ -1,1 +1,1 @@
-CUDA_VISIBLE_DEVICES=0 python pretrain_bert.py
+CUDA_VISIBLE_DEVICES=2 python pretrain_bert.py
