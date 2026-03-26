@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Model Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { width: 80%; margin: auto; }
+        .section { margin: 20px 0; }
+        .section-title { font-size: 24px; margin-bottom: 10px; }
+        .metrics-table { width: 100%; border-collapse: collapse; }
+        .metrics-table th, .metrics-table td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+        .metrics-table th { background-color: #f2f2f2; }
+        .image { text-align: center; margin: 20px 0; }
+        .image-container {display: flex; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="section">
+            <div class="section-title">Model Metrics</div>
+            <table class="metrics-table">
+                <tr>
+                    <th>Metric</th>
+                    <th>Model</th>
+                    <th>Random Prior Testing</th>
+                    <th>Testing Everyone</th>
+                </tr>
+                <tr>
+                    <td>Precision</td>
+                    <td>1.0</td>
+                    <td>0.23</td>
+                    <td>0.23</td>
+                </tr>
+                <tr>
+                    <td>Recall</td>
+                    <td>1.0</td>
+                    <td>0.23</td>
+                    <td>1.0</td>
+
+                </tr>
+                <tr>
+                    <td>F1-Score</td>
+                    <td>1.0</td>
+                    <td>0.23</td>
+                    <td>0.38</td>
+                </tr>
+                <tr>
+                    <td>ROC AUC</td>
+                    <td>1.0</td>
+                    <td>0.5</td>
+                    <td>0.5</td>
+                </tr>
+                <tr>
+                    <td>Precision-Recall AUC</td>
+                    <td>1.0</td>
+                    <td>0.32</td>
+                    <td>0.62</td>
+                </tr>
+                <tr>
+                    <td>Balanced Accuracy</td>
+                    <td>1.0</td>
+                    <td>0.5</td>
+                    <td>0.5</td>
+                </tr>
+                <tr>
+                    <td>Sensitivity</td>
+                    <td>1.0</td>
+                    <td>0.23</td>
+                    <td>1.0</td>
+                </tr>
+                <tr>
+                    <td>Specificity</td>
+                    <td>1.0</td>
+                    <td>0.77</td>
+                    <td>0.0</td>
+                </tr>
+                <tr>
+                    <td>G-Mean</td>
+                    <td>1.0</td>
+                    <td>0.42</td>
+                    <td>0.0</td>
+                </tr>
+                <tr>
+                    <td>True Positive Rate</td>
+                    <td>1.0</td>
+                    <td>0.23</td>
+                    <td>1.0</td>
+                </tr>
+                <tr>
+                    <td>False Positive Rate</td>
+                    <td>0.0</td>
+                    <td>0.23</td>
+                    <td>1.0</td>
+                </tr>
+                <tr>
+                    <td>P(T1D | +)</td>
+                    <td>1.0</td>
+                    <td>0.23</td>
+                    <td>0.23</td>
+                </tr>
+                <tr>
+                    <td>Bayes Factor</td>
+                    <td>6317.36</td>
+                    <td>1.01</td>
+                    <td>1.0</td>
+                </tr>
+                <tr>
+                    <td>Log Loss</td>
+                    <td>0.01</td>
+                    <td>12.79</td>
+                    <td>27.72</td>
+                </tr>
+                <tr>
+                    <td>Brier Score Loss</td>
+                    <td>0.0</td>
+                    <td>0.35</td>
+                    <td>0.77</td>
+                </tr>
+                <tr>
+                    <td>Brier Skill Score</td>
+                    <td>1.0</td>
+                    <td>n/a</td>
+                    <td>-1.2</td>
+                </tr>
+            </table>
+        </div>
+        <div class="container">
+            <div class="section">
+                <div class="section-title">Confusion Matrix</div>
+                <div class="image-container">
+                    <div class="image-item">
+                        <img src="artifacts/confusion_matrix.png" alt="Confusion Matrix">
+                    </div>
+                    <div class="image-item">
+                        <img src="artifacts/confusion_matrix_random.png" alt="Confusion Matrix Ref">
+                    </div>
+                    <div class="image-item">
+                        <img src="artifacts/confusion_matrix_const.png" alt="Confusion Matrix Const">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="section">
+                <div class="section-title">Precision-Recall Curve</div>
+                <div class="image-container">
+                    <div class="image-item">
+                        <img src="artifacts/pr_curve.png" alt="Precision-Recall Curve">
+                    </div>
+                    <div class="image-item">
+                        <img src="artifacts/pr_curve_random.png" alt="Precision-Recall Curve Ref">
+                    </div>
+                    <div class="image-item">
+                        <img src="artifacts/pr_curve_const.png" alt="Precision-Recall Curve Const">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="section">
+                <div class="section-title">Metadata</div>
+                 <table class="metrics-table">
+                    <tr>
+                        <th>Name</th>
+                        <th>Value</th>
+                    </tr>
+                    <tr>
+                        <td>Report Date</td>
+                        <td>2026-03-26 14:45:39</td>
+                    </tr>
+                    <tr>
+                        <td>Train size</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>Test size</td>
+                        <td>115048</td>
+                    </tr>
+                    <tr>
+                        <td>Train T1D ratio</td>
+                        <td>n/a</td>
+                    </tr>
+                    <tr>
+                        <td>Test T1D ratio</td>
+                        <td>0.230912</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="container">
+            <div class="section">
+                <div class="section-title">Model Parameters</div>
+                <pre>{'model_name': 'finetuned_bert'}</pre>
+            </div>
+        </div>
+        <div class="container">
+            <div class="section">
+                <div class="section-title">Additional Notes</div>
+                <p>n/a</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

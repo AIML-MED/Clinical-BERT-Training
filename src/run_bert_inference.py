@@ -69,10 +69,14 @@ if __name__ == "__main__":
     )
     
     # loading model
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     model = transformers.BertForSequenceClassification.from_pretrained(finetuned_dir_root)
+
+    if torch.cuda.device_count() > 1:
+        model = torch.nn.DataParallel(model, device_ids=list(range(torch.cuda.device_count())))
+
     model.to(device)
-    
+ 
     # Running inference
     pipeline = BertInferencePipeline(model, config=bert_config, device=device)
     result = pipeline.run(test_dataloader)
