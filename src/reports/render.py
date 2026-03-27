@@ -35,7 +35,7 @@ class ReportRenderer:
 
         self.cm_filename = "confusion_matrix"
         self.report_dir = os.path.join(
-            "experiments", metadata["report_datetime"].replace(":", "-")
+            "..", "aiml", "outputs", "inference", metadata["report_datetime"].replace(":", "-")
         )
         self.report_artifacts_dir = os.path.join(self.report_dir, "artifacts")
 
@@ -169,4 +169,3 @@ class ReportRenderer:
 
         plt.savefig(os.path.join(self.report_artifacts_dir, filename))
         plt.close()
-

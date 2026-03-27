@@ -40,7 +40,7 @@ class BertRegressionReport:
     
     def generate(self, save=True):
         report_datetime = str(datetime.now().replace(microsecond=0))
-        report_dir = os.path.join('experiments', report_datetime.replace(':', '-'))
+        report_dir = os.path.join('..', 'aiml', 'outputs', 'inference', report_datetime.replace(':', '-'))
         
         os.makedirs(report_dir, exist_ok=True)
         

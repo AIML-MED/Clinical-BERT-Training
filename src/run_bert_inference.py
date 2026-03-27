@@ -29,7 +29,7 @@ from utils import read_config
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Args for BERT inference script.")
     
-    parser.add_argument('-c', '--config-path', type=str, default='configs/bert.json', help='Path to the BERT configuration file')
+    parser.add_argument('-c', '--config-path', type=str, default='../aiml/configs_aiml/bert_aiml.json', help='Path to the BERT configuration file')
     
     args = parser.parse_args()
     
@@ -43,7 +43,7 @@ if __name__ == "__main__":
     finetuned_model_dir = bert_config['finetuned_model_name']
     
     # Preprocess data
-    finetuned_dir_root = os.path.join('outputs', finetuned_model_dir)
+    finetuned_dir_root = os.path.join('..', 'aiml', 'outputs', 'finetune', finetuned_model_dir)
     codes_mapping = get_codes_mapping(os.path.join(finetuned_dir_root, 'vocab.txt'))
     
     data_processor = MedbertDataPreprocessor(save=False)

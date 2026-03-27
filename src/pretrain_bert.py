@@ -229,7 +229,7 @@ def train_model(
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Args for BERT inference script.")
-    parser.add_argument('-c', '--config-path', type=str, default='configs/pretrain.yaml', help='Path to the BERT configuration file')
+    parser.add_argument('-c', '--config-path', type=str, default='../aiml/configs_aiml/pretrain_aiml.yaml', help='Path to the BERT configuration file')
     
     args = parser.parse_args()
     

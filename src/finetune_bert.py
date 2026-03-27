@@ -53,7 +53,7 @@ from utils import read_config
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Args for BERT inference script.")
     
-    parser.add_argument('-c', '--config-path', type=str, default='configs/bert.json', help='Path to the BERT configuration file')
+    parser.add_argument('-c', '--config-path', type=str, default='../aiml/configs_aiml/bert_aiml.json', help='Path to the BERT configuration file')
     args = parser.parse_args()
 
     bert_config = read_config(args.config_path)
@@ -131,10 +131,10 @@ if __name__ == "__main__":
         callbacks=[early_stopping_callback],
     )
     
-    report_save_dir = os.path.join('outputs/', finetuned_model_name)
+    report_save_dir = os.path.join('..', 'aiml', 'outputs', 'finetune', finetuned_model_name)
 
     if not os.path.exists(report_save_dir):
-        os.makedirs(report_save_dir)
+        os.makedirs(report_save_dir, exist_ok=True)
         
     train_results = trainer.train()    
     history = pd.DataFrame(trainer.state.log_history)
