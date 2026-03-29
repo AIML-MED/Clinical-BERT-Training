@@ -28,6 +28,7 @@ class MetricsCallback(TrainerCallback):
     def __init__(self, logging_directory):
         self.training_history = []
         self.logging_directory = logging_directory
+        os.makedirs(self.logging_directory, exist_ok=True)
 
     def on_evaluate(self, args, state, control, metrics, **kwargs):
         self.training_history.append(metrics)
@@ -45,7 +46,7 @@ class SaveMetricsCallback(TrainerCallback):
     def __init__(self, logging_directory):
         self.logging_directory = logging_directory
         self.metrics_history = []
-
+        os.makedirs(self.logging_directory, exist_ok=True)
     def on_log(self, args, state, control, logs=None, **kwargs):
         current_metrics = {"step": state.global_step, **logs}
         self.metrics_history.append(current_metrics)

@@ -70,9 +70,10 @@ class ReportRenderer:
         Args:
             save (bool): If True, saves the generated HTML report and plots to disk (default is `True`).
         """
-        env = Environment(loader=FileSystemLoader("."))
-        template = env.get_template("reports/report_template.html")
-
+        template_dir = os.path.dirname(__file__)
+        env = Environment(loader=FileSystemLoader(template_dir))
+        template = env.get_template("report_template.html")
+        
         multimodel_metrics = self.models_report.models_comparison_metrics
         bss = multimodel_metrics["brier_skill_scores"]
 

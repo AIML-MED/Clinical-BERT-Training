@@ -1,12 +1,12 @@
 learning_rate: 0.00005
-batch_size: 192
+batch_size: 132
 gradient_accumulation_steps: 1
-eval_batch_size: 192
+eval_batch_size: 132
 hidden_size: 768
 num_hidden_layers: 12
 num_attention_heads: 12
 model_flavour: "bert"
-eval_steps: 5000 # how many batches until one run over the validation set
+eval_steps: 500 # how many batches until one run over the validation set
 prediction_fraction: 0.15 # how many tokens to use for masked language modelling
 masking_fraction: 0.8 # how many of the masked language modelling tokens to replace with the mask token
 random_replacement_fraction: 0.1 # how many of the tokens for masked language modelling to replace with random words
@@ -32,7 +32,7 @@ fp16: True # reduce memory usage. This runs out of memory fairly quickly.
 warmup_steps: 0.05 # how many epochs to spend warming up the learning rate
 save_total_limit: 3
 early_stopping_delay: 0.0 # how many epochs to wait until starting to use early stopping.
-output: "../aiml/outputs/pretrain/" # output dir folder
-training_data_filepath: "../aiml/datasets/synthea_diabetes_training_updated.parquet"
+output: "outputs/pretrain/" # output dir folder
+training_data_filepath: "datasets/synthea_diabetes_training_updated.parquet"
 val_size: 0.01 # val dataset fraction
-vocab_filepath: "../aiml/datasets/vocab_synthea.txt" # vocab file path; TODO: cleanup path
+vocab_filepath: "datasets/vocab_synthea.txt" # vocab file path; TODO: cleanup path
