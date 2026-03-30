@@ -8,7 +8,7 @@
     "max_length": 512,
     "patience": 8,
     "data_filepath": "datasets/synthea_diabetes_training_updated.parquet",
-    "test_data_filepath": "datasets/synthea_diabetes_inference.parquet",
+    "test_data_filepath": "datasets/synthea_diabetes_inference_updated.parquet",
     "finetuned_model_name": "finetuned_bert",
     "pretrained_model_dir": "outputs/pretrain",
     "training_args": {
