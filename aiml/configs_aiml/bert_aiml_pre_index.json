@@ -1,0 +1,28 @@
+{
+    "problem_type": "single_label_classification",
+    "num_labels": 2,
+    "target_column": "COHORT",
+    "threshold": 0.8,
+    "test_size": 0.05,
+    "random_state": 42,
+    "max_length": 512,
+    "patience": 8,
+    "data_filepath": "datasets/synthea_diabetes_training_updated.parquet",
+    "test_data_filepath": "datasets/synthea_diabetes_training_updated_1000_1000_pre_index.parquet",
+    "finetuned_model_name": "finetuned_bert",
+    "pretrained_model_dir": "outputs/pretrain",
+    "training_args": {
+        "per_device_train_batch_size": 256,
+        "num_train_epochs": 50,
+        "learning_rate": 0.000003,
+        "logging_dir": "./logs",
+        "save_steps": 10000,
+        "logging_steps": 500,
+        "eval_steps": 2000,
+        "warmup_steps": 0,
+        "load_best_model_at_end": true,
+        "output_dir": "outputs/finetune",
+        "metric_for_best_model": "eval_roc_auc_1_vs_rest",
+        "save_total_limit": 3
+    }
+}
