@@ -32,7 +32,7 @@ fp16: True # reduce memory usage. This runs out of memory fairly quickly.
 warmup_steps: 0.05 # how many epochs to spend warming up the learning rate
 save_total_limit: 3
 early_stopping_delay: 0.0 # how many epochs to wait until starting to use early stopping.
-output: "outputs/pretrain/" # output dir folder
-training_data_filepath: "datasets/synthea_diabetes_training_updated.parquet"
+output: "outputs/pretrain_truncated_excluding_2000/" # output dir folder
+training_data_filepath: "datasets/synthea_diabetes_training_truncated_excluding_2000.parquet"
 val_size: 0.01 # val dataset fraction
 vocab_filepath: "datasets/vocab_synthea.txt" # vocab file path; TODO: cleanup path

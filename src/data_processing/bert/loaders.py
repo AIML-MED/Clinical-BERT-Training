@@ -286,10 +286,10 @@ class PretrainingDataCollator:
             attention_mask[i, : len(encoded_inputs)] = 1
 
         to_return = {
-            "input_ids": torch.from_numpy(inputs),
+            "input_ids": torch.from_numpy(inputs).long(),
             "attention_mask": torch.from_numpy(attention_mask),
-            "position_ids": torch.from_numpy(position_ids),
-            "labels": torch.from_numpy(labels),
+            "position_ids": torch.from_numpy(position_ids).long(),
+            "labels": torch.from_numpy(labels).long(),
         }
 
         if "token_type_ids" in list_of_data[0]:

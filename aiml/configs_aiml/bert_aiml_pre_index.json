@@ -7,10 +7,10 @@
     "random_state": 42,
     "max_length": 512,
     "patience": 8,
-    "data_filepath": "datasets/synthea_diabetes_training_updated.parquet",
+    "data_filepath": "datasets/synthea_diabetes_training_truncated_excluding_2000.parquet",
     "test_data_filepath": "datasets/synthea_diabetes_training_updated_1000_1000_pre_index.parquet",
-    "finetuned_model_name": "finetuned_bert",
-    "pretrained_model_dir": "outputs/pretrain",
+    "finetuned_model_name": "finetuned_bert_truncated_excluding_2000_pre_index_test",
+    "pretrained_model_dir": "outputs/pretrain_truncated_excluding_2000",
     "training_args": {
         "per_device_train_batch_size": 256,
         "num_train_epochs": 50,
