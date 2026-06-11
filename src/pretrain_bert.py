@@ -127,6 +127,8 @@ def train_model(
         
         torch.cuda.empty_cache()
         model = model_class(config=config)
+    elif model.get_input_embeddings().num_embeddings != len(vocabulary):
+        model.resize_token_embeddings(len(vocabulary))
     
     if "override_maxlen" not in training_args:
         max_sequence_length = resolve_sequence_length(model)
@@ -254,6 +256,11 @@ if __name__ == "__main__":
         vocabulary,
         local_training_logs_directory,
         code_filter=None, # args["code_filter"]
+        model=(
+            AutoModelForMaskedLM.from_pretrained(pretrain_config["pretrained_model_dir"])
+            if pretrain_config.get("pretrained_model_dir")
+            else None
+        ),
     )
 
     model.save_pretrained(local_save_directory)

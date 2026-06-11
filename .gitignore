@@ -6,3 +6,6 @@ data/
 .idea/*
 .checkmarx/scan_results/*
 aiml/datasets/
+oscar_omop/
+
+oscar_omop/
