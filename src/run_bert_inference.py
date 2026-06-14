@@ -48,6 +48,11 @@ if __name__ == "__main__":
     
     data_processor = MedbertDataPreprocessor(save=False)
     processed_diagnosis = data_processor.load(bert_config['test_data_filepath'])
+    print('Test: ', processed_diagnosis.shape)
+    if problem_type != BertProblems.REGRESSION:
+        print('Test class counts:')
+        print(processed_diagnosis[target_column].value_counts().sort_index())
+        print('Test positive prevalence: ', processed_diagnosis[target_column].mean())
     
     # Creating tokenizer and data loader
     tokenizer = tokenizers.models.WordPiece.from_file(os.path.join(finetuned_dir_root, 'vocab.txt'))
@@ -70,7 +75,10 @@ if __name__ == "__main__":
     
     # loading model
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-    model = transformers.BertForSequenceClassification.from_pretrained(finetuned_dir_root)
+    model = transformers.BertForSequenceClassification.from_pretrained(
+        finetuned_dir_root,
+        attn_implementation="eager",
+    )
 
     if torch.cuda.device_count() > 1:
         model = torch.nn.DataParallel(model, device_ids=list(range(torch.cuda.device_count())))
