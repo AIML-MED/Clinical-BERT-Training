@@ -79,6 +79,7 @@ if __name__ == "__main__":
         problem_type=problem_type,
         num_labels=bert_config['num_labels'],
         ignore_mismatched_sizes=True,
+        attn_implementation="eager",
     ).to(device)
 
     stratification_col = None if problem_type == 'regression' else processed_diagnosis[target_column]
