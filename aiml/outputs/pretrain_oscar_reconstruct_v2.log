@@ -1,0 +1,46 @@
+The new embeddings will be initialized from a multivariate normal distribution that has old embeddings' mean and covariance. As described in this article: https://nlp.stanford.edu/~johnhew/vocab-expansion.html. To disable this, use `mean_resizing=False`
+{'learning_rate': 5e-05,
+ 'batch_size': 16,
+ 'gradient_accumulation_steps': 1,
+ 'eval_batch_size': 16,
+ 'hidden_size': 768,
+ 'num_hidden_layers': 12,
+ 'num_attention_heads': 12,
+ 'model_flavour': 'bert',
+ 'eval_steps': 500,
+ 'prediction_fraction': 0.15,
+ 'masking_fraction': 0.8,
+ 'random_replacement_fraction': 0.1,
+ 'minimum_number_of_tokens': 5,
+ 'num_training_epochs': 5,
+ 'max_position_embeddings': 1825,
+ 'min_history_size': 5,
+ 'weight_decay': 0.001,
+ 'hidden_dropout_prob': 0.15,
+ 'attention_probs_dropout_prob': 0.15,
+ 'training_partition_size': 256,
+ 'validation_partition_size': 12,
+ 'early_stop_metric': 'eval_loss',
+ 'early_stop_patience': 30,
+ 'validation_set_fraction': 0.0015,
+ 'override_maxlen': 512,
+ 'tokens_kept_fraction': 1.0,
+ 'logging_steps': 100,
+ 'save_steps': 500,
+ 'bf16': False,
+ 'num_dataloader_workers': 4,
+ 'fp16': True,
+ 'warmup_steps': 0.05,
+ 'save_total_limit': 5,
+ 'save_safetensors': False,
+ 'early_stopping_delay': 0.0,
+ 'output': 'outputs/pretrain_oscar_reconstruct_v2/',
+ 'training_data_filepath': 'datasets/reconstruct_training_last_record_oscar_relative_cohort_clean.parquet',
+ 'val_size': 0.01,
+ 'vocab_filepath': '../oscar_omop/vocab_oscar_last_record_reconstruct_expanded.txt',
+ 'pretrained_model_dir': '../oscar_omop'}
+Saving training logs in outputs/pretrain_oscar_reconstruct_v2/_training_logs
+Loading preprocessed data...
+Train:  (26476, 18)
+Val:  (268, 18)
+  0%|          | 0/8275 [00:00<?, ?it/s]
