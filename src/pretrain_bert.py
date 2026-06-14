@@ -187,6 +187,7 @@ def train_model(
         save_total_limit=training_args[
             "save_total_limit"
         ],  # prevent to many models from being saved
+        save_safetensors=training_args.get("save_safetensors", True),
         dataloader_num_workers=training_args["num_dataloader_workers"],
     )
 
@@ -257,7 +258,10 @@ if __name__ == "__main__":
         local_training_logs_directory,
         code_filter=None, # args["code_filter"]
         model=(
-            AutoModelForMaskedLM.from_pretrained(pretrain_config["pretrained_model_dir"])
+            AutoModelForMaskedLM.from_pretrained(
+                pretrain_config["pretrained_model_dir"],
+                attn_implementation="eager",
+            )
             if pretrain_config.get("pretrained_model_dir")
             else None
         ),
