@@ -1,0 +1,13 @@
+{
+  "config_path": "configs_aiml/bert_oscar_reconstruct_v2_naturalprevalence_test.json",
+  "data_file": "/data/dwang/Clinical-BERT-Training/aiml/datasets/reconstruct_inference_naturalprevalence_v2.parquet",
+  "model_dir": "/data/dwang/Clinical-BERT-Training/aiml/outputs/finetune/finetuned_oscar_reconstruct_v2",
+  "output_dir": "/data/dwang/Clinical-BERT-Training/aiml/outputs/explain_oscar_reconstruct_v2_natural",
+  "target_class": 1,
+  "max_patients": 50,
+  "label_filter": 1,
+  "ig_steps": 24,
+  "include_demographics": false,
+  "device": "cuda:0",
+  "patients_explained": 50
+}
