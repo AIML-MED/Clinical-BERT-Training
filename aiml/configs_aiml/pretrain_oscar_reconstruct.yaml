@@ -34,7 +34,7 @@ save_total_limit: 5
 save_safetensors: false
 early_stopping_delay: 0.0
 output: "outputs/pretrain_oscar_reconstruct_v2/"
-training_data_filepath: "datasets/reconstruct_training_last_record_oscar_relative_cohort_clean.parquet"
+training_data_filepath: "datasets/reconstruct_training_v2.parquet"
 val_size: 0.01
 vocab_filepath: "../oscar_omop/vocab_oscar_last_record_reconstruct_expanded.txt"
 pretrained_model_dir: "../oscar_omop"

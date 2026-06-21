@@ -148,6 +148,75 @@ Continued MLM pretraining on Synthea
 This approach preserves all existing OSCAR token IDs and pretrained embeddings while extending the vocabulary to support Synthea-specific concepts. Newly added tokens are initialised through embedding resizing and subsequently learned during continued masked-language-model (MLM) pretraining on the Synthea corpus.
 
 
+### 5.4 Analysis of Newly Added Tokens
+
+
+Following token harmonisation, 771 clinically relevant concepts remained absent from the original OSCAR vocabulary.
+To understand the nature of the remaining vocabulary gap, we analysed the composition and frequency of the newly added tokens.
+
+A complete summary of all newly added tokens, including token type, occurrence counts, and vocabulary-expansion status, is available in the accompanying CSV file [vocab_oscar_new_by_frequency.csv](oscar_omop/vocab_oscar_new_by_frequency.csv).
+
+| Token type | Unique tokens | Corpus occurrences |
+| --- |--------------:| ---: |
+| SNOMED |           303 | 545,223 |
+| ICD10CM |           456 | 484,063 |
+| RXNORM |            12 | 1,264 |
+| **Total** |       **771** | **1,030,550** |
+
+The remaining vocabulary gap was overwhelmingly driven by clinical-event concepts, with SNOMED and ICD10CM codes accounting for more than 98% of all newly added tokens and more than one million corpus occurrences.
+
+#### Most Frequent Newly Added Tokens
+
+The newly added tokens were not limited to rare concepts. Many appeared frequently throughout the reconstructed Synthea corpus and therefore required dedicated embeddings for effective model adaptation.
+
+| Token                  | Category                   | Corpus occurrences |
+| ---------------------- | -------------------------- | -----------------: |
+| SNOMED:710824005       | SNOMED                     |             45,591 |
+| SNOMED:428211000124100 | SNOMED                     |             28,471 |
+| ICD10CM:389095005      | Numeric concept identifier |             26,366 |
+| ICD10CM:72892002       | Numeric concept identifier |             26,331 |
+| ICD10CM:Z34.00         | Standard ICD10CM code      |             26,331 |
+| ICD10CM:Z34.80         | Standard ICD10CM code      |             26,331 |
+| SNOMED:103697008       | SNOMED                     |             23,977 |
+| SNOMED:243085009       | SNOMED                     |             23,414 |
+| SNOMED:710841007       | SNOMED                     |             23,390 |
+
+
+**Characteristics of Newly Added ICD10CM Tokens** 
+
+Among the 456 newly added ICD10CM-prefixed tokens, three distinct categories were observed:
+
+| ICD10CM subtype | Unique tokens | Corpus occurrences |
+| --- | ---: | ---: |
+| Standard-like ICD10CM codes | 335 | 325,882 |
+| Numeric concept IDs under ICD10CM prefix | 72 | 143,259 |
+| Placeholder or unresolved ICD10CM codes | 49 | 14,922 |
+
+Most newly added ICD10CM tokens corresponded to standard diagnosis codes. However, a subset appeared to represent internal Synthea ontology concepts or SNOMED-style identifiers that were stored under the ICD10CM prefix.
+
+Examples of high-frequency numeric concept identifiers included:
+
+| Token | Corpus occurrences |
+| --- | ---: |
+| `ICD10CM:389095005` | 26,366 |
+| `ICD10CM:72892002` | 26,331 |
+| `ICD10CM:314529007` | 23,282 |
+| `ICD10CM:103697008` | 11,570 |
+| `ICD10CM:33879002` | 8,954 |
+
+
+In addition, several placeholder or unresolved diagnosis codes were observed. These appear to originate from Synthea's internal ontology and synthetic data-generation process, which can produce partially specified diagnosis codes (e.g., codes containing `?` placeholders) that are not present in standard ICD10CM vocabularies or the original OSCAR vocabulary.
+
+| Token | Corpus occurrences |
+| --- | ---: |
+| `ICD10CM:T78.40X?` | 3,542 |
+| `ICD10CM:T14.8XX?` | 1,627 |
+| `ICD10CM:T74.32X?` | 1,429 |
+| `ICD10CM:T50.901?` | 1,238 |
+| `ICD10CM:S06.0X0?` | 782 |
+
+
+
 ## 6. Continued Pretraining
 
 Once vocabulary compatibility was addressed, we performed continued masked-language-model pretraining.

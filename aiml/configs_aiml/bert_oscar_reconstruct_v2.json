@@ -7,8 +7,8 @@
     "random_state": 42,
     "max_length": 512,
     "patience": 8,
-    "data_filepath": "datasets/reconstruct_training_last_record_oscar_relative_cohort_clean.parquet",
-    "test_data_filepath": "datasets/reconstruct_inference_last_record_oscar_relative_cohort_clean.parquet",
+    "data_filepath": "datasets/reconstruct_training_v2.parquet",
+    "test_data_filepath": "datasets/reconstruct_inference_v2.parquet",
     "finetuned_model_name": "finetuned_oscar_reconstruct_v2",
     "pretrained_model_dir": "outputs/pretrain_oscar_reconstruct_v2/checkpoint-7500",
     "training_args": {
